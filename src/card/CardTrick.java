@@ -21,59 +21,43 @@ public class CardTrick {
         Card[] magicHand = new Card[7];
         
         // Fill the magicHand array with random cards
-        Random rand = new Random();
+        Random hand = new Random();
+        
         String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
         
         for (int i = 0; i < magicHand.length; i++) {
             Card c = new Card();
-            c.setValue(rand.nextInt(13) + 1); // Random value between 1 and 13
-            c.setSuit(suits[rand.nextInt(suits.length)]); 
+            c.setValue(hand.nextInt(13) + 1); // Random value between 1 and 13
+            c.setSuit(suits[hand.nextInt(suits.length)]); 
             magicHand[i] = c; // Add card to the magic hand
         }
-        
-        
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Pick a card (Enter a number between 1 and 13):");
-        int userValue = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
-        System.out.println("Pick a suit (Hearts, Diamonds, Clubs, Spades):");
-        String userSuit = scanner.nextLine();
-        
-        // Check if the user's card is in the magic hand
-        boolean found = false;
-        for (Card card : magicHand) {
-            if (card.getValue() == userValue && card.getSuit().equalsIgnoreCase(userSuit)) {
-                found = true;
-                break;
-            }
-        }
-        
-        // Report if the card was found or not
-        if (found) {
-            System.out.println("Congratulations! Your card is in the magic hand.");
-        } else {
-            System.out.println("Sorry, your card is not in the magic hand.");
-        }
-        
         // Hard-coded lucky card
-        Card luckyCard = new Card();
-        luckyCard.setValue(2); // Example value
-        luckyCard.setSuit("Clubs"); // Example suit
+        Card luckyCard= new Card();
+        luckyCard.setValue(2);
+        luckyCard.setSuit("Clubs");
+        // Example suit
         
-        // Check if the lucky card is in the magic hand
+        //check if the lucky card is in the magic hand
+        
         boolean luckyFound = false;
-        for (Card card : magicHand) {
-            if (card.getValue() == luckyCard.getValue() && card.getSuit().equalsIgnoreCase(luckyCard.getSuit())) {
-                luckyFound = true;
-                break;
+        for(Card card : magicHand){
+            if(card.getValue()==luckyCard.getValue()&& card.getSuit().equalsIgnoreCase(luckyCard.getSuit())){luckyFound = true;
+            break;
             }
         }
+        //show message if the lucky card was found or not 
         
-        // Report if the lucky card was found or not
-        if (luckyFound) {
-            System.out.println("The lucky card (2 of Clubs) was found in the magic hand!");
-        } else {
-            System.out.println("The lucky card (2 of Clubs) was not found in the magic hand.");
+        if (luckyFound){
+            System.out.println("the lucky cuard ("+ luckyCard.getValue()+"of"+ luckyCard.getSuit()+") was  found in the magic hand.");
+        } else{
+            System.out.println("the lucky cuard ("+ luckyCard.getValue()+"of"+ luckyCard.getSuit()+") was not found in the magic hand.");
         }
     }
 }
+          
+        
+        
+        
+        
+        
+        
